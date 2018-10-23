@@ -1,0 +1,43 @@
+.df {
+	display: flex;
+}
+
+.dfc {
+	display: flex;
+	flex-direction: column;
+}
+
+.gcc {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 20px;
+}
+
+.gccc {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+}
+
+.gc2c {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-column-gap: 20px;
+}
+
+.fwb {
+	font-weight: bold;
+}
+
+.w100 {
+	width: 100%;
+}
+.w50 {
+	width: 50%;
+}
+.w33 {
+	width: 33%;
+}
+.w25 {
+	width: 25%;
+}

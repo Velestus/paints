@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { formatSessionLifetime } from 'utils/formatters';
 
+import { message } from 'antd';
+
 export class VSessionTimer extends React.Component {
 	static propTypes = {
 		sessionLifetime: PropTypes.number,
@@ -53,11 +55,12 @@ export class VSessionTimer extends React.Component {
 		}
 
 		if (value === 30 || value === 15 || value === 10 || value === 5) {
-			console.log('session ends soon');
+			message.warn('Sesja niedługo się zakończy');
 		}
 
 		if (value === 0) {
 			clearInterval(this.state.timer);
+			message.error('Sesja się zakończyła');
 			this.props.logoutCall();
 		}
 	}

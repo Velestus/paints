@@ -5,16 +5,23 @@ import AppRoute from 'components/AppRoute';
 import NotFoundRoute from 'components/NotFoundRoute';
 
 import App from 'modules/app/App';
+import ContactPage from 'modules/contact/ContactPage';
+import GalleryPage from 'modules/gallery/GalleryPage';
 import HomePage from 'modules/home/HomePage';
 import LoginPage from 'modules/login/LoginPage';
+import CertificatesPage from 'modules/certificates/CertificatesPage';
 import SettingsPage from 'modules/settings/SettingsPage';
 
 export const getRoutes = ({ dispatch, getState }) => {
 	const route = (
 		<App>
 			<Switch>
-				<AppRoute exact path="/" component={HomePage} />
+				<Route exact path="/" component={HomePage} />
+				<Route exact path="/contact" component={ContactPage} />
+				<Route exact path="/gallery" component={GalleryPage} />
+				<Route exact path="/certificates" component={CertificatesPage} />
 				<AppRoute exact path="/settings" component={SettingsPage} />
+
 				<Route path="/login" component={LoginPage} />
 				<NotFoundRoute />
 			</Switch>

@@ -12,5 +12,12 @@
 	.login-form-button {
 		width: 100%;
 		background-color: $primary-color;
+		color: $secondary-color;
+		&:hover,
+		&:focus,
+		&:active {
+			border-color: $secondary-color;
+			color: $secondary-color;
+		}
 	}
 }

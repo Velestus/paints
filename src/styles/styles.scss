@@ -1,9 +1,8 @@
-$primary-color: hsl(160, 40, 60);
-$secondary-color: hsl(160, 60, 10);
+$primary-color: hsl(260, 40, 70);
+$secondary-color: hsl(260, 60, 10);
 $font-color: hsl(0, 10, 10);
 $font-color-header: hsl(0, 10, 90);
-
-$primary-color-hover: hsl(160, 60, 40);
+$primary-color-hover: hsl(260, 60, 40);
 
 body {
 	margin: 0;
@@ -21,11 +20,16 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+@import 'styles/_davedraft.scss';
 
 // import components - default styling
 @import '~antd/dist/antd.css';
+@import 'styles/components/_vpagetitle.scss';
+
 // import wrappers - custom styling
+@import 'styles/components/wrappers/_vpagewrapper.scss';
 
 // import pages - page-specific styling
 @import 'styles/_app.scss';
 @import 'styles/_login.scss';
+@import 'styles/pages/_homepage.scss';

@@ -100,7 +100,6 @@ class LoginPageClass extends Component {
 					</Form.Item>
 					<Form.Item>
 						<Button
-							type="primary"
 							htmlType="submit"
 							className="login-form-button"
 							icon="login"

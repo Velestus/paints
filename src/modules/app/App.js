@@ -36,6 +36,13 @@ class AppClass extends React.Component {
 			}
 		}
 	}
+
+	handleLoginClick = () => {
+		this.props.history.push({
+			pathname: '/login'
+		});
+	};
+
 	handleSettingsClick = () => {
 		this.setState({
 			current: ''
@@ -60,8 +67,8 @@ class AppClass extends React.Component {
 			case 'home':
 				pathname = '/';
 				break;
-			case 'paints':
-				pathname = '/paints';
+			case 'certificates':
+				pathname = '/certificates';
 				break;
 			case 'gallery':
 				pathname = '/gallery';
@@ -92,24 +99,33 @@ class AppClass extends React.Component {
 		}
 
 		const dropdownOptions = (
-			<Menu>
+			<Menu className="App-dropdown">
 				<Menu.Item key="settings" onClick={this.handleSettingsClick}>
-					USTAWIENIA
+					<Icon type="setting" /> Ustawienia
 				</Menu.Item>
-				<Menu.Item key="logout" onClick={() => this.props.logoutCall()}>
-					WYLOGUJ
-				</Menu.Item>
+				{session.isUserLoggedIn && (
+					<Menu.Item key="logout" onClick={() => this.props.logoutCall()}>
+						<Icon type="logout" /> Wyloguj
+					</Menu.Item>
+				)}
+				{!session.isUserLoggedIn && (
+					<Menu.Item key="login" onClick={this.handleLoginClick}>
+						<Icon type="login" /> Zaloguj
+					</Menu.Item>
+				)}
 			</Menu>
 		);
 		const sessionTimer = (
 			<div className="App-header-sessiontime">
-				<Button
-					ghost
-					shape="circle"
-					icon="reload"
-					className="App-header-sessiontime-button"
-					onClick={() => this.props.sessionRefreshCall()}
-				/>
+				{session.isUserLoggedIn && (
+					<Button
+						ghost
+						shape="circle"
+						icon="reload"
+						className="App-header-sessiontime-button"
+						onClick={() => this.props.sessionRefreshCall()}
+					/>
+				)}
 				{timer}
 				<Dropdown overlay={dropdownOptions} trigger={['click']}>
 					<Icon type="caret-down" style={{ cursor: 'pointer' }} />
@@ -126,16 +142,16 @@ class AppClass extends React.Component {
 				theme="dark"
 			>
 				<Menu.Item key="home" className="App-menu-item">
-					Strona główna
+					<Icon type="home" /> Strona główna
 				</Menu.Item>
-				<Menu.Item key="paints" className="App-menu-item">
-					Baza farb
+				<Menu.Item key="certificates" className="App-menu-item">
+					<Icon type="database" /> Certyfikaty
 				</Menu.Item>
 				<Menu.Item key="gallery" className="App-menu-item">
-					Galeria
+					<Icon type="picture" /> Galeria
 				</Menu.Item>
 				<Menu.Item key="mail" className="App-menu-item">
-					Kontakt
+					<Icon type="phone" /> Kontakt
 				</Menu.Item>
 			</Menu>
 		);
@@ -145,13 +161,17 @@ class AppClass extends React.Component {
 			view = children;
 		} else {
 			view = (
-				<div className="view">
+				<Layout className="view">
 					<Layout.Header className="App-header">
 						{menu}
 						{sessionTimer}
 					</Layout.Header>
-					<Layout.Content>{children}</Layout.Content>
-				</div>
+					<Layout.Content className="App-content">{children}</Layout.Content>
+					<Layout.Footer className="App-footer">
+						Copyright <Icon type="copyright" /> Bartosz Borawski. All rights
+						reserved.
+					</Layout.Footer>
+				</Layout>
 			);
 		}
 
