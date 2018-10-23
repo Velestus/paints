@@ -106,7 +106,7 @@ class LoginPageClass extends Component {
 							icon="login"
 							loading={loginData.isBusy}
 						>
-							Log in
+							Zaloguj
 						</Button>
 					</Form.Item>
 				</Form>

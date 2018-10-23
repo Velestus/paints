@@ -7,6 +7,8 @@ import {
 import { push } from 'react-router-redux';
 import { getStartPage } from 'modules/root/routing';
 
+import { message } from 'antd';
+
 export const loginCall = (login_id, password) => (dispatch, getState) => {
 	const store = { dispatch, getState };
 
@@ -33,7 +35,8 @@ export const logoutCall = snackbarData => (dispatch, getState) => {
 	const reply = {};
 	setTimeout(() => {
 		dispatch({ type: LOGOUT_SUCCESS, reply });
-	}, 2000);
+		message.success('Nastąpiło poprawne wylogowanie.');
+	}, 200);
 };
 
 function onUserLoggedIn(store) {

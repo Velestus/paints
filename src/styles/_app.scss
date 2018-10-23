@@ -2,15 +2,23 @@
 	text-align: center;
 }
 .App-menu {
-	box-sizing: border-box;
-	width: 100vw;
 	display: flex;
 	flex-direction: row;
+	background-color: white;
 	.App-menu-item {
 		height: 100%;
-	}
-	.App-menu-session {
-		flex: 1 1 100%;
+		color: $font-color;
+		border-radius: 4px;
+		&:hover {
+			color: $font-color;
+			opacity: 0.7;
+		}
+		&.ant-menu-item-selected {
+			background-color: $primary-color;
+		}
+		&.ant-menu-item-selected:hover {
+			opacity: 1;
+		}
 	}
 }
 
@@ -18,7 +26,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: $font-color-header;
+	color: $font-color;
+	background-color: white;
+	border-bottom: 2px solid $primary-color;
 }
 .App-header-sessiontime {
 	display: flex;
@@ -26,7 +36,11 @@
 	align-items: center;
 	width: 150px;
 	.App-header-sessiontime-button {
-		//color: $font-color-header;
+		color: $font-color;
+		border: none;
+		&:hover {
+			color: $primary-color;
+		}
 	}
 }
 

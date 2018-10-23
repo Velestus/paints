@@ -21,14 +21,58 @@ class AppClass extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			current: 'mail'
+			current: 'home'
 		};
 	}
 
-	handleMenuClick = event => {
+	componentDidMount() {}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (this.props.pathname !== prevProps.pathname) {
+			if (this.props.pathname === '/') {
+				this.setState({
+					current: 'home'
+				});
+			}
+		}
+	}
+	handleSettingsClick = () => {
 		this.setState({
-			current: event.key
+			current: ''
 		});
+		this.props.history.push({
+			pathname: '/settings'
+		});
+	};
+
+	handleMenuClick = event => {
+		this.setState(
+			{
+				current: event.key
+			},
+			() => this.handleTabChange(this.state.current)
+		);
+	};
+
+	handleTabChange = key => {
+		let pathname;
+		switch (key) {
+			case 'home':
+				pathname = '/';
+				break;
+			case 'paints':
+				pathname = '/paints';
+				break;
+			case 'gallery':
+				pathname = '/gallery';
+				break;
+			case 'mail':
+				pathname = '/contact';
+				break;
+			default:
+				break;
+		}
+		this.props.history.push({ pathname });
 	};
 
 	render() {
@@ -49,8 +93,12 @@ class AppClass extends React.Component {
 
 		const dropdownOptions = (
 			<Menu>
-				<Menu.Item>USTAWIENIA</Menu.Item>
-				<Menu.Item>WYLOGUJ</Menu.Item>
+				<Menu.Item key="settings" onClick={this.handleSettingsClick}>
+					USTAWIENIA
+				</Menu.Item>
+				<Menu.Item key="logout" onClick={() => this.props.logoutCall()}>
+					WYLOGUJ
+				</Menu.Item>
 			</Menu>
 		);
 		const sessionTimer = (
@@ -63,8 +111,8 @@ class AppClass extends React.Component {
 					onClick={() => this.props.sessionRefreshCall()}
 				/>
 				{timer}
-				<Dropdown overlay={dropdownOptions}>
-					<Icon type="caret-down" />
+				<Dropdown overlay={dropdownOptions} trigger={['click']}>
+					<Icon type="caret-down" style={{ cursor: 'pointer' }} />
 				</Dropdown>
 			</div>
 		);
@@ -74,13 +122,20 @@ class AppClass extends React.Component {
 				onClick={this.handleMenuClick}
 				selectedKeys={[this.state.current]}
 				mode="horizontal"
+				className="App-menu"
 				theme="dark"
 			>
-				<Menu.Item key="mail" className="App-menu-item">
-					Navigation One
+				<Menu.Item key="home" className="App-menu-item">
+					Strona główna
 				</Menu.Item>
-				<Menu.Item key="app" className="App-menu-item">
-					Navigation Two
+				<Menu.Item key="paints" className="App-menu-item">
+					Baza farb
+				</Menu.Item>
+				<Menu.Item key="gallery" className="App-menu-item">
+					Galeria
+				</Menu.Item>
+				<Menu.Item key="mail" className="App-menu-item">
+					Kontakt
 				</Menu.Item>
 			</Menu>
 		);

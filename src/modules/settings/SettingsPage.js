@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 class SettingsPageClass extends React.Component {
 	render() {
-		return <div className="SettingsPage">---</div>;
+		return <div className="SettingsPage">Settings</div>;
 	}
 }
 

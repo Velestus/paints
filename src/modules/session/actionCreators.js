@@ -2,6 +2,7 @@ import {
 	SESSION_REFRESH_STARTED,
 	SESSION_REFRESH_SUCCESS
 } from 'modules/session/actions';
+import { message } from 'antd';
 
 export const sessionRefreshCall = () => (dispatch, getState) => {
 	dispatch({ type: SESSION_REFRESH_STARTED });
@@ -14,5 +15,6 @@ export const sessionRefreshCall = () => (dispatch, getState) => {
 	};
 	setTimeout(() => {
 		dispatch({ type: SESSION_REFRESH_SUCCESS, reply });
+		message.success('Odświeżono czas sesji logowania.');
 	}, 2000);
 };
