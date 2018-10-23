@@ -85,6 +85,7 @@ class LoginPageClass extends Component {
 						<Input
 							prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
 							placeholder="Username"
+							onChange={this.handleChange}
 							value={this.state.username}
 						/>
 					</Form.Item>
@@ -93,6 +94,7 @@ class LoginPageClass extends Component {
 							prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
 							type="password"
 							placeholder="Password"
+							onChange={this.handleChange}
 							value={this.state.password}
 						/>
 					</Form.Item>
@@ -101,6 +103,7 @@ class LoginPageClass extends Component {
 							type="primary"
 							htmlType="submit"
 							className="login-form-button"
+							icon="login"
 							loading={loginData.isBusy}
 						>
 							Log in

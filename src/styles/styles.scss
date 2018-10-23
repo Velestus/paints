@@ -1,3 +1,10 @@
+$primary-color: hsl(160, 40, 60);
+$secondary-color: hsl(160, 60, 10);
+$font-color: hsl(0, 10, 10);
+$font-color-header: hsl(0, 10, 90);
+
+$primary-color-hover: hsl(160, 60, 40);
+
 body {
 	margin: 0;
 	padding: 0;
@@ -7,15 +14,13 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 16px;
+	color: $font-color;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
-
-$primary-color: hsl(160, 60, 40);
-$secondary-color: hsl(160, 60, 10);
 
 // import components - default styling
 @import '~antd/dist/antd.css';

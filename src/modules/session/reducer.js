@@ -1,6 +1,18 @@
 import update from 'immutability-helper';
 
-import { LOGIN_SUCCESS } from 'modules/login/actions';
+import {
+	SESSION_CANCELLED,
+	SESSION_CLOSED,
+	SESSION_REFRESH_STARTED,
+	SESSION_REFRESH_SUCCESS
+} from 'modules/session/actions';
+
+import {
+	LOGIN_SUCCESS,
+	LOGOUT_STARTED,
+	LOGOUT_SUCCESS,
+	USER_AUTO_LOGOUT
+} from 'modules/login/actions';
 
 const initialState = {
 	isUserLoggedIn: false,
@@ -13,6 +25,19 @@ const initialState = {
 
 const sessionReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case SESSION_REFRESH_STARTED:
+			return update(state, {
+				sessionRefreshed: { $set: false },
+				sessionRefreshing: { $set: true }
+			});
+		case SESSION_REFRESH_SUCCESS:
+			return update(state, {
+				isUserLoggedIn: { $set: action.reply.session.is_user_logged_in },
+				sessionLifetime: { $set: action.reply.session.lifetime },
+				sessionRefreshed: { $set: true },
+				sessionRefreshing: { $set: false },
+				token: { $set: action.reply.session.csrf_token }
+			});
 		case LOGIN_SUCCESS:
 			const { reply } = action;
 			return update(state, {
@@ -23,6 +48,12 @@ const sessionReducer = (state = initialState, action) => {
 				sessionRefreshed: { $set: true },
 				sessionRefreshing: { $set: false }
 			});
+		case LOGOUT_STARTED:
+		case LOGOUT_SUCCESS:
+		case SESSION_CANCELLED:
+		case SESSION_CLOSED:
+		case USER_AUTO_LOGOUT:
+			return initialState;
 		default: {
 			// return at the end of the function
 		}
