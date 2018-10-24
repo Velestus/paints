@@ -13,9 +13,7 @@
 
 .GalleryPage-Picture {
 	width: 250px;
-	margin-bottom: 20px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin: 5px 5px 15px 5px;
 	&:hover {
 		color: $primary-color;
 		.ant-card-head-title {

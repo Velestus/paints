@@ -95,7 +95,7 @@ class AppClass extends React.Component {
 			case 'gallery':
 				pathname = '/gallery';
 				break;
-			case 'mail':
+			case 'contact':
 				pathname = '/contact';
 				break;
 			default:
@@ -174,7 +174,7 @@ class AppClass extends React.Component {
 				<Menu.Item key="gallery" className="App-menu-item">
 					<Icon type="picture" /> Galeria
 				</Menu.Item>
-				<Menu.Item key="mail" className="App-menu-item">
+				<Menu.Item key="contact" className="App-menu-item">
 					<Icon type="phone" /> Kontakt
 				</Menu.Item>
 			</Menu>

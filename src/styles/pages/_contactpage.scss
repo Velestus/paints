@@ -1,0 +1,30 @@
+.ContactPage-Wrapper {
+	height: 100%;
+	width: 100%;
+}
+.ContactPage-Content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	.ContactPage-Contacts {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		.ContactPage-Contact {
+			display: grid;
+			grid-template-columns: 1fr 11fr;
+			grid-column-gap: 10px;
+			margin-top: 10px;
+			align-items: center;
+			text-align: left;
+			svg,
+			a {
+				font-size: 2em;
+			}
+		}
+	}
+}
