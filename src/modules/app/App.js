@@ -25,7 +25,29 @@ class AppClass extends React.Component {
 		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		let current;
+		switch (this.props.location.pathname) {
+			case '/':
+				current = 'home';
+				break;
+			case '/certificates':
+				current = 'certificates';
+				break;
+			case '/gallery':
+				current = 'gallery';
+				break;
+			case '/contact':
+				current = 'contact';
+				break;
+			default:
+				current = '';
+				break;
+		}
+		this.setState({
+			current
+		});
+	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.props.pathname !== prevProps.pathname) {

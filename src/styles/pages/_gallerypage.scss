@@ -1,0 +1,25 @@
+.GalleryPage-Wrapper {
+	display: block;
+	overflow-y: auto;
+}
+
+.GalleryPage-Content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.GalleryPage-Picture {
+	width: 250px;
+	margin-bottom: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	&:hover {
+		color: $primary-color;
+		.ant-card-head-title {
+			color: $primary-color;
+		}
+	}
+}
