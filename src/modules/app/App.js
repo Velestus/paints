@@ -21,6 +21,7 @@ class AppClass extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			collapsedMenu: true,
 			current: 'home'
 		};
 	}
@@ -58,6 +59,12 @@ class AppClass extends React.Component {
 			}
 		}
 	}
+
+	toggleMenuVisibility = () => {
+		this.setState(prevState => ({
+			collapsedMenu: !prevState.collapsedMenu
+		}));
+	};
 
 	handleLoginClick = () => {
 		this.props.history.push({
@@ -158,26 +165,41 @@ class AppClass extends React.Component {
 		);
 
 		const menu = (
-			<Menu
-				onClick={this.handleMenuClick}
-				selectedKeys={[this.state.current]}
-				mode="horizontal"
-				className="App-menu"
-				theme="dark"
+			<Layout.Sider
+				trigger={null}
+				collapsible
+				collapsed={this.state.collapsedMenu}
+				className="App-menu-wrapper"
 			>
-				<Menu.Item key="home" className="App-menu-item">
-					<Icon type="home" /> Strona główna
-				</Menu.Item>
-				<Menu.Item key="certificates" className="App-menu-item">
-					<Icon type="database" /> Certyfikaty
-				</Menu.Item>
-				<Menu.Item key="gallery" className="App-menu-item">
-					<Icon type="picture" /> Galeria
-				</Menu.Item>
-				<Menu.Item key="contact" className="App-menu-item">
-					<Icon type="phone" /> Kontakt
-				</Menu.Item>
-			</Menu>
+				<Menu
+					onClick={this.handleMenuClick}
+					selectedKeys={[this.state.current]}
+					mode="inline"
+					className="App-menu"
+					theme="dark"
+				>
+					<Menu.Item key="home" className="App-menu-item">
+						<Icon type="home" /> <span>Strona główna</span>
+					</Menu.Item>
+					<Menu.Item key="certificates" className="App-menu-item">
+						<Icon type="database" /> <span>Certyfikaty</span>
+					</Menu.Item>
+					<Menu.Item key="gallery" className="App-menu-item">
+						<Icon type="picture" /> <span>Galeria</span>
+					</Menu.Item>
+					<Menu.Item key="contact" className="App-menu-item">
+						<Icon type="phone" /> <span>Kontakt</span>
+					</Menu.Item>
+				</Menu>
+			</Layout.Sider>
+		);
+
+		const siderTrigger = (
+			<Icon
+				className="App-menu-trigger"
+				type={this.state.collapsedMenu ? 'menu-unfold' : 'menu-fold'}
+				onClick={this.toggleMenuVisibility}
+			/>
 		);
 
 		let view;
@@ -185,17 +207,20 @@ class AppClass extends React.Component {
 			view = children;
 		} else {
 			view = (
-				<Layout className="view">
-					<Layout.Header className="App-header">
-						{menu}
-						{sessionTimer}
-					</Layout.Header>
-					<Layout.Content className="App-content">{children}</Layout.Content>
-					<Layout.Footer className="App-footer">
-						Nazwa produktu <Icon type="copyright" /> Napisał{' '}
-						<span style={{ color: 'blue' }}>Bartosz Borawski</span>. Wszelkie
-						prawa zastrzeżone.
-					</Layout.Footer>
+				<Layout>
+					{menu}
+					<Layout className="view">
+						<Layout.Header className="App-header">
+							{siderTrigger}
+							{sessionTimer}
+						</Layout.Header>
+						<Layout.Content className="App-content">{children}</Layout.Content>
+						<Layout.Footer className="App-footer">
+							Nazwa produktu <Icon type="copyright" /> Napisał{' '}
+							<span style={{ color: 'blue' }}>Bartosz Borawski</span>. Wszelkie
+							prawa zastrzeżone.
+						</Layout.Footer>
+					</Layout>
 				</Layout>
 			);
 		}

@@ -6,27 +6,34 @@
 		background-color: $background-light-color;
 	}
 }
+.App-menu-wrapper {
+	background-color: $primary-color;
+}
 .App-menu {
-	display: flex;
-	flex-direction: row;
-	background-color: $background-header-color;
+	background-color: $primary-color;
 	.App-menu-item {
 		box-sizing: border-box;
 		height: 100%;
 		color: $font-color;
-		border-radius: 4px;
 		margin-left: 10px;
 		&:hover {
-			color: $font-color;
-			background-color: $primary-color;
+			color: $font-color-header;
+			background-color: $primary-color-hover;
 			opacity: 0.9;
 		}
 		&.ant-menu-item-selected {
-			background-color: $primary-color;
+			color: $font-color-header;
+			background-color: $primary-color-hover;
 		}
 		&.ant-menu-item-selected:hover {
 			opacity: 1;
 		}
+	}
+}
+.App-menu-trigger {
+	cursor: pointer;
+	&:hover {
+		color: $primary-color;
 	}
 }
 .App-dropdown li {
