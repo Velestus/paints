@@ -4,6 +4,10 @@ $font-color: hsl(0, 10, 10);
 $font-color-header: hsl(0, 10, 90);
 $primary-color-hover: hsl(260, 60, 40);
 
+$background-color: hsl(260, 5, 97);
+$background-light-color: hsl(260, 0, 100);
+$background-header-color: hsl(260, 5, 90);
+
 body {
 	margin: 0;
 	padding: 0;
@@ -38,5 +42,6 @@ code {
 // import pages - page-specific styling
 @import 'styles/_app.scss';
 @import 'styles/_login.scss';
+@import 'styles/pages/_certificatespage.scss';
 @import 'styles/pages/_homepage.scss';
 @import 'styles/pages/_gallerypage.scss';

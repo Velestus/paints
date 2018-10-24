@@ -3,12 +3,13 @@
 	height: 100vh;
 	.view {
 		height: 100%;
+		background-color: $background-light-color;
 	}
 }
 .App-menu {
 	display: flex;
 	flex-direction: row;
-	background-color: white;
+	background-color: $background-header-color;
 	.App-menu-item {
 		box-sizing: border-box;
 		height: 100%;
@@ -36,7 +37,7 @@
 	align-items: center;
 	justify-content: space-between;
 	color: $font-color;
-	background-color: white;
+	background-color: $background-header-color;
 	border-bottom: 2px solid $primary-color;
 }
 .App-header-sessiontime {
@@ -54,12 +55,11 @@
 }
 
 .App-content {
-	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 }
 
 .App-footer {
 	border-top: 2px solid $primary-color;
-	background-color: white;
+	background-color: $background-header-color;
 }
