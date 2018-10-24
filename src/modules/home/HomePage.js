@@ -19,13 +19,15 @@ class HomePageClass extends React.Component {
 			<VPageWrapper>
 				<VPageTitle size="large">Strona główna</VPageTitle>
 				<div className="gc2c w100">
-					<List
-						header={<div className="fwb">Lista</div>}
-						size="small"
-						bordered
-						dataSource={data}
-						renderItem={item => <List.Item>{item}</List.Item>}
-					/>
+					<div className="w100">
+						<List
+							header={<div className="fwb">Lista elementów</div>}
+							size="small"
+							bordered
+							dataSource={data}
+							renderItem={item => <List.Item>{item}</List.Item>}
+						/>
+					</div>
 					<Carousel className="HomePage-carousel" autoplay>
 						<div>
 							<h3>1</h3>

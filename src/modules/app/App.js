@@ -85,7 +85,7 @@ class AppClass extends React.Component {
 	render() {
 		const { children, location, session } = this.props;
 
-		let timer = null;
+		let timer = <div />;
 
 		if (session.sessionLifetime !== null) {
 			timer = (
@@ -117,7 +117,7 @@ class AppClass extends React.Component {
 		);
 		const sessionTimer = (
 			<div className="App-header-sessiontime">
-				{session.isUserLoggedIn && (
+				{session.isUserLoggedIn ? (
 					<Button
 						ghost
 						shape="circle"
@@ -125,6 +125,8 @@ class AppClass extends React.Component {
 						className="App-header-sessiontime-button"
 						onClick={() => this.props.sessionRefreshCall()}
 					/>
+				) : (
+					<div />
 				)}
 				{timer}
 				<Dropdown overlay={dropdownOptions} trigger={['click']}>
@@ -168,8 +170,9 @@ class AppClass extends React.Component {
 					</Layout.Header>
 					<Layout.Content className="App-content">{children}</Layout.Content>
 					<Layout.Footer className="App-footer">
-						Copyright <Icon type="copyright" /> Bartosz Borawski. All rights
-						reserved.
+						Nazwa produktu <Icon type="copyright" /> Napisał{' '}
+						<span style={{ color: 'blue' }}>Bartosz Borawski</span>. Wszelkie
+						prawa zastrzeżone.
 					</Layout.Footer>
 				</Layout>
 			);
