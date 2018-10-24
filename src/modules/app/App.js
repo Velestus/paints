@@ -84,7 +84,8 @@ class AppClass extends React.Component {
 	handleMenuClick = event => {
 		this.setState(
 			{
-				current: event.key
+				current: event.key,
+				collapsedMenu: true
 			},
 			() => this.handleTabChange(this.state.current)
 		);
