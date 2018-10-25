@@ -148,13 +148,16 @@ class AppClass extends React.Component {
 		const sessionTimer = (
 			<div className="App-header-sessiontime">
 				{session.isUserLoggedIn ? (
-					<Button
-						ghost
-						shape="circle"
-						icon="reload"
-						className="App-header-sessiontime-button"
-						onClick={() => this.props.sessionRefreshCall()}
-					/>
+					<React.Fragment>
+						<p className="App-header-user">{session.loggedInUserId}</p>
+						<Button
+							ghost
+							shape="circle"
+							icon="reload"
+							className="App-header-sessiontime-button"
+							onClick={() => this.props.sessionRefreshCall()}
+						/>
+					</React.Fragment>
 				) : (
 					<div />
 				)}

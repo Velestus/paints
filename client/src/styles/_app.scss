@@ -51,7 +51,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	width: 150px;
+	width: 300px;
 	.App-header-sessiontime-button {
 		color: $font-color;
 		border: none;
@@ -59,6 +59,10 @@
 			color: $primary-color;
 		}
 	}
+}
+.App-header-user {
+	margin: 0 10px 0 0;
+	font-size: 2em;
 }
 
 .App-content {
