@@ -3,6 +3,6 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "cd server && yarn dev"
+		"start": "cd server && yarn dev"
 	}
 }
